@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { Products } from "./model/product.model.js";
 import productRoute from "./routes/product.route.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 // enhance home page of the server
