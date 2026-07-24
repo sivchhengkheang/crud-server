@@ -3,7 +3,13 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { Products } from "./model/product.model.js";
 import productRoute from "./routes/product.route.js";
+import authRoute from "./routes/user.route.js";
 import cors from "cors";
+
+import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { User } from "./model/user.model.js";
 
 dotenv.config();
 
@@ -196,6 +202,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productRoute);
+
+app.use("/api/auth", authRoute);
 
 // connecting Database
 mongoose
